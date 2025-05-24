@@ -1,4 +1,4 @@
-# [Play in the browser on itch.io](https://nauti312.itch.io/six-cards-under)
+## [Play in the browser on itch.io](https://nauti312.itch.io/six-cards-under)
 
 # Six Cards Under
 Delve into an endless dungeon full of undead, demons, and necromancy in this retro dungeon crawler & deck builder hybrid. Six Cards Under is a take on the classic 90s dungeon crawlers with raycast rendering, turn-based combat, and plenty of enemies to burn down. Pick six cards in a drafting system to build your deck, then jump into the depths of the dungeon to see how many floors you can descend each run. Enemies only get harder the deeper you go, but there are a fair amount of pick-ups along the way to keep you alive.

@@ -1,0 +1,41 @@
+﻿@using global::SeaLegs.Data
+
+
+@* This page pulls a list of paths for each graphical asset used in the game. The Home.razor page passes a list of these paths into
+the GraphicsData class, which is then retrieved by this page. That list is used to instantiate all of the graphics with
+ElementReferences that are then stored in a dictionary and passed back into the GraphicsData class for later use within
+the game. *@
+
+<div class="Graphics-Container">
+	@foreach (string graphic in assets)
+	{
+		try
+		{
+			<img src="@graphic" @ref="@(graphics[graphic])" id="@graphic" hidden />
+		}
+		catch
+		{
+			Console.WriteLine($"Graphic at path {graphic} couldn't be found.");
+		}
+	}
+
+</div>
+
+@code {
+
+	private Dictionary<string, ElementReference> graphics = new Dictionary<string, ElementReference>();
+	private List<string> assets = new List<string>();
+
+	protected override void OnInitialized()
+	{
+		assets = GraphicsData.GetGraphicsList();
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		if (firstRender)
+		{
+			GraphicsData.SetGraphicsDictionary(graphics);
+		}
+	}
+}

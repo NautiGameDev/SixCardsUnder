@@ -1,0 +1,8 @@
+﻿@using global::SeaLegs.Pages
+@inherits SLDisplayComponent
+
+<div class="CanvasOverlay" id="CanvasOverlay" style="width: @wrapperWidth; height: @wrapperHeight;" onkeydown="@HandleKeyDown" onkeyup="@HandleKeyUp" onmousemove="@HandleMousePosition" onmousedown="@HandleMouseDown" onmouseup="@HandleMouseUp" tabindex="0">
+	<BECanvas @ref="canvas" Width="Width" Height="Height"/>
+</div>
+
+<Graphics/>

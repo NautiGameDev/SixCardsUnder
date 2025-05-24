@@ -1,0 +1,122 @@
+﻿@page "/"
+@using PixelArtGameJam.Game
+@using PixelArtGameJam.SeaLegs.Pages
+@using global::SeaLegs.Data
+
+<PageTitle>Home</PageTitle>
+
+<SLDisplay Width="1080" Height="720"/>
+
+@code {
+	DungeonCrawler game { get; set; } = new DungeonCrawler();
+
+	protected override void OnInitialized()
+	{
+		GameSettings.UpdateDesignDimensions(1080, 720);
+		GameSettings.EnablePixelArtRendering();
+
+		//Load graphics
+		//Textures
+		GraphicsData.AddGraphicToList("Assets/Textures/HighRes/MudBricks.png");
+		GraphicsData.AddGraphicToList("Assets/Textures/HighRes/CrackedBricks.png");
+		GraphicsData.AddGraphicToList("Assets/Textures/HighRes/TwoToneBricks.png");
+		GraphicsData.AddGraphicToList("Assets/Textures/HighRes/PolishedBrickFlag.png");
+		GraphicsData.AddGraphicToList("Assets/Textures/HighRes/TwoToneFinish.png");
+		GraphicsData.AddGraphicToList("Assets/Textures/HighRes/TwoToneStart.png");
+
+		GraphicsData.AddGraphicToList("Assets/Textures/HighRes/MudBricksFloor.png");
+		GraphicsData.AddGraphicToList("Assets/Textures/HighRes/MudBricksCeiling.png");
+
+		//Enemies
+		GraphicsData.AddGraphicToList("Assets/Enemies/DarkElf_Alchemist.png");
+		GraphicsData.AddGraphicToList("Assets/Enemies/DarkElf_Alchemist_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Enemies/DarkElf_Necromancer.png");
+		GraphicsData.AddGraphicToList("Assets/Enemies/DarkElf_Necromancer_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Enemies/Demon_Druid.png");
+		GraphicsData.AddGraphicToList("Assets/Enemies/Demon_Druid_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Enemies/Demon_Mage.png");
+		GraphicsData.AddGraphicToList("Assets/Enemies/Demon_Mage_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Enemies/Undead_Archer.png");
+		GraphicsData.AddGraphicToList("Assets/Enemies/Undead_Archer_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Enemies/Undead_Archer2.png");
+		GraphicsData.AddGraphicToList("Assets/Enemies/Undead_Archer2_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Enemies/Undead_Knight.png");
+		GraphicsData.AddGraphicToList("Assets/Enemies/Undead_Knight_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Enemies/Undead_Sage.png");
+		GraphicsData.AddGraphicToList("Assets/Enemies/Undead_Sage_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Enemies/Undead_Warrior.png");
+		GraphicsData.AddGraphicToList("Assets/Enemies/Undead_Warrior_Shadow.png");
+
+		//Cards
+		GraphicsData.AddGraphicToList("Assets/Cards/Card_Spark.png");
+		GraphicsData.AddGraphicToList("Assets/Cards/Card_Burst.png");
+		GraphicsData.AddGraphicToList("Assets/Cards/Card_Firewall.png");
+		GraphicsData.AddGraphicToList("Assets/Cards/Card_Block.png");
+		GraphicsData.AddGraphicToList("Assets/Cards/Card_Bolt.png");
+		GraphicsData.AddGraphicToList("Assets/Cards/Card_Comet.png");
+		GraphicsData.AddGraphicToList("Assets/Cards/Card_Energize.png");
+		GraphicsData.AddGraphicToList("Assets/Cards/Card_Fear.png");
+		GraphicsData.AddGraphicToList("Assets/Cards/Card_Fireball.png");
+		GraphicsData.AddGraphicToList("Assets/Cards/Card_Frost.png");
+		GraphicsData.AddGraphicToList("Assets/Cards/Card_Heal.png");
+		GraphicsData.AddGraphicToList("Assets/Cards/Card_Siphon.png");
+		GraphicsData.AddGraphicToList("Assets/Cards/Card_Specter.png");
+		GraphicsData.AddGraphicToList("Assets/Cards/Card_Spikes.png");
+		GraphicsData.AddGraphicToList("Assets/Cards/Card_Surge.png");
+
+		//Abilities
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Spark.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Spark_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Burst.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Burst_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Firewall_Left.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Firewall_Left_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Firewall_Center.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Firewall_Center_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Firewall_Right.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Firewall_Right_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Block.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Bolt.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Bolt_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Comet.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Comet_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Energize.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Fear.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Fear_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Fireball.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Fireball_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Frost.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Frost_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Heal.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Siphon.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Siphon_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Specter.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Specter_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Spikes.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Spikes_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Surge.png");
+		GraphicsData.AddGraphicToList("Assets/Abilities/Ability_Surge_Shadow.png");
+
+		//User Interface
+		GraphicsData.AddGraphicToList("Assets/UI/HealthBar_Frame.png");
+		GraphicsData.AddGraphicToList("Assets/UI/Character_Portrait.png");
+		GraphicsData.AddGraphicToList("Assets/UI/Minimap_Border.png");
+		GraphicsData.AddGraphicToList("Assets/UI/Map_Border.png");
+		GraphicsData.AddGraphicToList("Assets/UI/Character_Elf.png");
+		GraphicsData.AddGraphicToList("Assets/UI/Background_Dungeon.png");
+		GraphicsData.AddGraphicToList("Assets/UI/InfoBox.png");
+		GraphicsData.AddGraphicToList("Assets/UI/Button.png");
+		GraphicsData.AddGraphicToList("Assets/UI/Button_Hovered.png");
+		GraphicsData.AddGraphicToList("Assets/UI/Logo.png");
+		GraphicsData.AddGraphicToList("Assets/UI/Nauti.png");
+		GraphicsData.AddGraphicToList("Assets/UI/Slider_Bar.png");
+		GraphicsData.AddGraphicToList("Assets/UI/Slider_Notch.png");
+
+		//Objects
+		GraphicsData.AddGraphicToList("Assets/Objects/Heart.png");
+		GraphicsData.AddGraphicToList("Assets/Objects/Heart_Shadow.png");
+		GraphicsData.AddGraphicToList("Assets/Objects/Crystal.png");
+		GraphicsData.AddGraphicToList("Assets/Objects/Crystal_Shadow.png");
+
+	}
+}

@@ -9,16 +9,18 @@ Delve into an endless dungeon full of undead, demons, and necromancy in this ret
 
 ## About the project:
 
-Six Cards Under was a game made for Pixel Game Jam 2025 with a heavy focus on pixel art. No game engine was used in the making of this game, just Blazor Web Assembly and HTML 2D Canvas.  The game uses a raycasting first-person shooter algorithm for scene rendering, and features grid-based movement with turn-based combat. Players draft their deck and use their chosen cards to defeat enemies and progress through an infinite dungeon.
+Six Cards Under was a game made for the 10-day Pixel Game Jam 2025 with a heavy focus on pixel art. No game engine was used in the making of this game, just Blazor Web Assembly and HTML 2D Canvas.  The game uses a raycasting first-person shooter algorithm for scene rendering, and features grid-based movement with turn-based combat. Players draft their deck and use their chosen cards to defeat enemies and progress through an infinite dungeon.
 
 
-## Known bugs:
+##Tech stack
+C#/Javascript
+Blazor WebAssembly
+BECanvas API
 
-Shadow Rendering - Due to the way certain regions handle decimals, IE: using a comma rather than a period, shadows aren't being rendered correctly to create the illusion of distance. This is interfering with the opacity of the alpha layer on many rectangles that are being rendered over the scene to create depth and rendering them as either solid black or not rendering them at all.
 
-Initial player rotation - When the player spawns the rotation is being set so that the start door is behind the player. This occasionally causes issues with movement until the player turns again and resets the rotation.
+## About Pixel Game Jam 2025
+The Pixel Game Jam is a 10-day game making marathon that took place in May 2025. During these 10 days, developers created a game with a focus on pixel art, fun mechanics, and creativity. 
 
-Projectiles disappearing - Since the world is based on a grid, I had to create a secondary layer in the world for projectiles to move to when their path was blocked by other projectiles so that projectiles can pass each other. This occasionally interferes with rendering projectiles onto the screen, causing them to disappear when on layer 2.
 
 ## Notes:
 Files in this repo are files of the source code for the project. I didn't include any assets since all assets used in this project were from purchased asset packs.

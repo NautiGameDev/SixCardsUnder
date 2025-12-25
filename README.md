@@ -13,11 +13,9 @@ Six Cards Under was a game made for the 10-day Pixel Game Jam 2025 with a heavy 
 
 
 ## Tech stack
-C#/Javascript
-
-Blazor WebAssembly
-
-BECanvas API
+* C#/Javascript
+* Blazor WebAssembly
+* BECanvas API
 
 
 ## About Pixel Game Jam 2025

@@ -12,7 +12,7 @@ Delve into an endless dungeon full of undead, demons, and necromancy in this ret
 Six Cards Under was a game made for the 10-day Pixel Game Jam 2025 with a heavy focus on pixel art. No game engine was used in the making of this game, just Blazor Web Assembly and HTML 2D Canvas.  The game uses a raycasting first-person shooter algorithm for scene rendering, and features grid-based movement with turn-based combat. Players draft their deck and use their chosen cards to defeat enemies and progress through an infinite dungeon.
 
 
-##Tech stack
+## Tech stack
 C#/Javascript
 Blazor WebAssembly
 BECanvas API

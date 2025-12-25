@@ -75,7 +75,6 @@ namespace PixelArtGameJam.Game.Abilities
             float dirY = -1 * (float)Math.Floor(Math.Sin(angleRadians));
             
             Vector2 targetGridSpace = position + new Vector2(dirX, dirY);
-            Console.WriteLine($"Firewall Left: {angle}");
 
             if (dungeonReference.TestGridSpaceEmpty(targetGridSpace))
             {
@@ -121,8 +120,6 @@ namespace PixelArtGameJam.Game.Abilities
             float dirY = -1 * (float)Math.Floor(Math.Sin(angleRadians));
 
             Vector2 targetGridSpace = position + new Vector2(dirX, dirY);
-
-            Console.WriteLine($"Firewall right: {angle}");
 
             if (dungeonReference.TestGridSpaceEmpty(targetGridSpace))
             {

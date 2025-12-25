@@ -91,7 +91,7 @@ namespace PixelArtGameJam.Game.WorldObjects
                     MovePlayer(-1, -1, rotation);
                 }
 
-                else if (InputController.OnKeyDown("q"))
+                else if (InputController.OnKeyDown("a"))
                 {
                     int projectedIndex = (rotationIndex - 1 + rotations.Length) % rotations.Length;
                     float angle = rotations[projectedIndex];
@@ -101,17 +101,17 @@ namespace PixelArtGameJam.Game.WorldObjects
                 {
                     MovePlayer(1, 1, rotation);
                 }
-                else if (InputController.OnKeyDown("e"))
+                else if (InputController.OnKeyDown("d"))
                 {
                     int projectedIndex = (rotationIndex - 1 + rotations.Length) % rotations.Length;
                     float angle = rotations[projectedIndex];
                     MovePlayer(1, 1, angle);
                 }
-                else if (InputController.OnKeyDown("a"))
+                else if (InputController.OnKeyDown("q"))
                 {
                     RotatePlayer(-1);
                 }
-                else if (InputController.OnKeyDown("d"))
+                else if (InputController.OnKeyDown("e"))
                 {
                     RotatePlayer(1);
                 }

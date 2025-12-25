@@ -47,6 +47,7 @@ namespace PixelArtGameJam.Game.UIElements
         private void TestMouseHover()
         {
             Vector2 mousePos = InputController.GetMousePosition();
+            
 
             if (mousePos.X > position.X &&
                 mousePos.X < position.X + background.dimensions.X * background.scale.X &&
@@ -61,6 +62,8 @@ namespace PixelArtGameJam.Game.UIElements
                 isHovered = false;
                 buttonText.isHovered = false;
             }
+
+            
         }
 
         private void TestMouseClicked()
@@ -71,11 +74,25 @@ namespace PixelArtGameJam.Game.UIElements
             }
         }
 
+        private void TestTouch()
+        {
+            Vector2 touchPos = InputController.GetTouchPosition();
+            if (touchPos.X > position.X &&
+                touchPos.X < position.X + background.dimensions.X * background.scale.X &&
+                touchPos.Y > position.Y &&
+                touchPos.Y < position.Y + background.dimensions.Y * background.scale.Y &&
+                InputController.OnTouchDown())
+            {
+                callbackAction?.Invoke();
+            }
+        }
+
         public async override Task Render()
         {
             if (!isDisabled)
             {
                 TestMouseHover();
+                TestTouch();
             }
             
 

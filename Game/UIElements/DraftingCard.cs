@@ -59,11 +59,27 @@ namespace PixelArtGameJam.Game.UIElements
             }
         }
 
+        private void IsTouched()
+        {
+            Vector2 touchPos = InputController.GetTouchPosition();
+                        
+
+            if (touchPos.X > position.X - (sprite.dimensions.X * sprite.scale.X * scaleOffset) / 2 &&
+            touchPos.X < position.X + (sprite.dimensions.X * sprite.scale.X * scaleOffset) / 2 &&
+            touchPos.Y > position.Y - (sprite.dimensions.Y * sprite.scale.Y * scaleOffset) / 2 &&
+            touchPos.Y < position.Y + (sprite.dimensions.Y * sprite.scale.Y * scaleOffset) / 2 &&
+            InputController.OnTouchDown())
+            {
+                callback?.Invoke(this);
+            }
+        }
+
         public async override Task Render()
         {
             if (IsHovered())
             {
                 IsClicked();
+                IsTouched();
             }
 
             await RenderingController.Draw(sprite.image, position - (sprite.dimensions * sprite.scale * scaleOffset)/2, sprite.dimensions * sprite.scale * scaleOffset);

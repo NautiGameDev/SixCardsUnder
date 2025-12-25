@@ -407,6 +407,11 @@ namespace PixelArtGameJam.Game.MapGenerator
                 angleDegrees = -angleDegrees;
             }
 
+            if (angleDegrees == -180)
+            {
+                angleDegrees = -angleDegrees;
+            }
+
             startRotation = angleDegrees;
 
             return mapData;

@@ -92,6 +92,7 @@ namespace PixelArtGameJam.Game.UIElements
         private bool TestClickDown()
         {
             Vector2 mousePos = InputController.GetMousePosition();
+            Vector2 touchPos = InputController.GetTouchPosition();
             Vector2 notchPos = CalculateSliderBarNotchPosition();
 
             if (mousePos.X > notchPos.X &&
@@ -103,6 +104,14 @@ namespace PixelArtGameJam.Game.UIElements
                 
                 return true;
             }
+            else if (touchPos.X > notchPos.X &&
+                touchPos.X < notchPos.X + (sliderBarNotch.dimensions.X * sliderBarNotch.scale.X) &&
+                touchPos.Y > notchPos.Y &&
+                touchPos.Y < notchPos.Y + (sliderBarNotch.dimensions.Y * sliderBarNotch.scale.Y) &&
+                InputController.OnTouchDown())
+            {
+                return true;
+            }
 
             return false;
         }
@@ -110,13 +119,17 @@ namespace PixelArtGameJam.Game.UIElements
         private void TestChangeValue()
         {
             Vector2 mousePosition = InputController.GetMousePosition();
+            Vector2 touchPosition = InputController.GetTouchPosition();
                         
 
             foreach (int sliderValue in valuePoints.Keys)
             {
                 Vector2 valueToTest = valuePoints[sliderValue];
 
-                float distance = Vector2.Distance(mousePosition, valueToTest);
+                float mouseDistance = Vector2.Distance(mousePosition, valueToTest);
+                float touchDistance = Vector2.Distance(touchPosition, valueToTest);
+
+                float distance = Math.Max(mouseDistance, touchDistance);
 
                 if (distance < 25)
                 {
@@ -133,6 +146,7 @@ namespace PixelArtGameJam.Game.UIElements
             if (!isChanging)
             {
                 isChanging = TestClickDown();
+
             }
             else if (isChanging && InputController.OnMouseUp())
             {

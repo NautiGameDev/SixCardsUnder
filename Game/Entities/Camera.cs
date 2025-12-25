@@ -192,12 +192,12 @@ namespace PixelArtGameJam.Game.Entities
                 await raycast.Cast(player.rotation, player.position);
             }
 
-            List<WorldObject> sortedList = objectsToRender.OrderByDescending(wObj => wObj.castedDistance).ToList();
-
+            List<WorldObject> sortedList = await SortWorldObjects();
 
             foreach (WorldObject wObj in sortedList)
             {
                 await wObj.Render();
+                await wObj.RenderShadows();
             }
 
             if (playerUI != null)
@@ -216,6 +216,12 @@ namespace PixelArtGameJam.Game.Entities
                 deathScreen.HandleAnimations(deltaTime);
 
             }
+        }
+
+        private async Task<List<WorldObject>> SortWorldObjects()
+        {
+            List<WorldObject> sortedList = objectsToRender.OrderByDescending(wObj => wObj.castedDistance).ToList();
+            return sortedList;
         }
 
         private async Task RenderMapState()

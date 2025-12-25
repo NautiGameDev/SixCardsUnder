@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Globalization;
+using System.Numerics;
 using PixelArtGameJam.Game.Components;
 using PixelArtGameJam.Game.Data;
 using PixelArtGameJam.Game.Scenes;
@@ -64,8 +65,11 @@ namespace PixelArtGameJam.Game.UIElements
 
         public async override Task Render()
         {
-            await RenderingController.DrawRectangles("rgba(0, 0, 0, 0.75)", 0, 0, (float)CanvasController.width, CanvasController.height);
-            await RenderingController.DrawRectangles("rgba(220, 20, 60, 0.5)", 0, 0, (float)CanvasController.width, CanvasController.height);
+            float blackOpacity = 0.75f;
+            float redOpacity = 0.75f;
+
+            await RenderingController.DrawRectangles($"rgba(0, 0, 0, {blackOpacity.ToString(CultureInfo.InvariantCulture)})", 0, 0, (float)CanvasController.width, CanvasController.height);
+            await RenderingController.DrawRectangles($"rgba(220, 20, 60, {redOpacity.ToString(CultureInfo.InvariantCulture)})", 0, 0, (float)CanvasController.width, CanvasController.height);
             
 
             await RenderingController.Draw(skullSprite.image, (int)animIndex, 0, skullSprite.dimensions, skullSprite.dimensions * skullSprite.scale, skullPosition);

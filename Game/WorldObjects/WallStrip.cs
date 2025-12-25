@@ -1,10 +1,9 @@
-﻿using System.Drawing;
-using System.Numerics;
+﻿using System.Numerics;
 using Microsoft.AspNetCore.Components;
-using PixelArtGameJam.Game.Data;
 using PixelArtGameJam.Game.Entities;
 using SeaLegs.Controllers;
-using SeaLegs.Data;
+using System.Globalization;
+
 
 /*This class is attached to each raycast and used for rendering walls*/
 
@@ -82,7 +81,7 @@ namespace PixelArtGameJam.Game.WorldObjects
             brightness = Math.Clamp(brightness, 0f, 1f);
             float adjustedBrightness = (1f - brightness) * 1.2f; // <-- Brightness scale in settings
 
-            return $"rgba(0, 0, 0, {adjustedBrightness}";
+            return $"rgba(0, 0, 0, {adjustedBrightness.ToString(CultureInfo.InvariantCulture)}";
         }
 
         public override async Task Render()
@@ -97,14 +96,12 @@ namespace PixelArtGameJam.Game.WorldObjects
                 position.Y,
                 sliceWidth,
                 wallHeight);
-
-            await CanvasController.context.SetFillStyleAsync(wallBrightness);
-            await CanvasController.context.FillRectAsync(position.X, position.Y, sliceWidth, wallHeight);
         }
 
         public override async Task RenderShadows()
         {
-            await RenderingController.DrawRectangles(wallBrightness, position.X, position.Y, sliceWidth, wallHeight);
+            await CanvasController.context.SetFillStyleAsync(wallBrightness);
+            await CanvasController.context.FillRectAsync(position.X, position.Y - 1f, sliceWidth, wallHeight + 2);
         }
     }
 }

@@ -183,18 +183,18 @@ namespace PixelArtGameJam.Game.WorldObjects
         public async override Task Render()
         {
             await RenderingController.Draw(sprite.image, (int)animIndex, animRow, sprite.dimensions, castedDimensions * sprite.scale, castedPosition);
+                       
+            rayIndices.Clear();
+            indexTODistance.Clear();
+        }
 
-            
+        public async override Task RenderShadows()
+        {
             float brightness = CalculateBrightness();
 
             await CanvasController.context.SetGlobalAlphaAsync(brightness);
             await RenderingController.Draw(sprite.shadowImage, (int)animIndex, animRow, sprite.dimensions, castedDimensions * sprite.scale, castedPosition);
             await CanvasController.context.SetGlobalAlphaAsync(1f);
-            
-            
-
-            rayIndices.Clear();
-            indexTODistance.Clear();
         }
     }
 }

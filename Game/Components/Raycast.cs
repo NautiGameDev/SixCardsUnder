@@ -51,8 +51,15 @@ namespace PixelArtGameJam.Game.Components
 
         public async Task Cast(float playerRotationDegrees, Vector2 playerPosition)
         {
+            double playerRotRads = playerRotationDegrees * 180 / Math.PI;
+            
+            double dx = Math.Round(Math.Cos(playerRotRads));
+            double dy = Math.Round(Math.Sin(playerRotRads));
+
             float xPos = playerPosition.X;
             float yPos = playerPosition.Y;
+
+            //Console.WriteLine(xPos / gridSize + " " + yPos / gridSize);
 
             for (int depth = 0; depth < maxDepth; depth++)
             {
@@ -83,6 +90,7 @@ namespace PixelArtGameJam.Game.Components
                         if (!objectsToRender.Contains(currentObject))
                         {
                             objectsToRender.Add(currentObject);
+                            Console.WriteLine($"Added {currentObject} to objects to render list.");
                         }
                         
                     }
@@ -114,6 +122,7 @@ namespace PixelArtGameJam.Game.Components
                             if (!objectsToRender.Contains(currentObject))
                             {
                                 objectsToRender.Add(currentObject);
+                                
                             }
                         }
                         if (currentObject.objType == WorldObject.ObjectType.WALL ||

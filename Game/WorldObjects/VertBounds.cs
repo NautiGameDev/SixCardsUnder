@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Globalization;
+using System.Numerics;
 using PixelArtGameJam.Game.Entities;
 using SeaLegs.Controllers;
 
@@ -37,7 +38,7 @@ namespace PixelArtGameJam.Game.WorldObjects
             float brightness = 1f - (float)distance / ((float)CanvasController.height/2);
             brightness = Math.Clamp(brightness, 0f, 1f);
             float adjustedbrightness = 1f - brightness;
-            return $"rgba(0, 0, 0, {adjustedbrightness}";
+            return $"rgba(0, 0, 0, {adjustedbrightness.ToString(CultureInfo.InvariantCulture)}";
         }
 
         public override async Task Render()

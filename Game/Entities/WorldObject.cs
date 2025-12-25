@@ -86,13 +86,7 @@ namespace PixelArtGameJam.Game.Entities
 
         public virtual async Task Render()
         {
-            await RenderingController.DrawNoScale(sprite.image, castedPosition, castedDimensions);
-
-            float brightness = CalculateBrightness();
-
-            await CanvasController.context.SetGlobalAlphaAsync(brightness);
-            await RenderingController.DrawNoScale(sprite.shadowImage, castedPosition, castedDimensions);
-            await CanvasController.context.SetGlobalAlphaAsync(1f);
+            await RenderingController.DrawNoScale(sprite.image, castedPosition, castedDimensions);          
 
             //Reset arrays for next calculation
             rayIndices.Clear();
@@ -101,7 +95,11 @@ namespace PixelArtGameJam.Game.Entities
 
         public virtual async Task RenderShadows()
         {
-            
+            float brightness = CalculateBrightness();
+
+            await CanvasController.context.SetGlobalAlphaAsync(brightness);
+            await RenderingController.DrawNoScale(sprite.shadowImage, castedPosition, castedDimensions);
+            await CanvasController.context.SetGlobalAlphaAsync(1f);
         }
         
         public virtual void ResolveDamage(int damage, int stunFactor, int fearFactor, int burnFactor)

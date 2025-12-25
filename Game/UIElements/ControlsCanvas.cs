@@ -57,19 +57,19 @@ namespace PixelArtGameJam.Game.UIElements
             moveBackwardButton.SetButtonDisabled(true);
             moveBackwardText = new TextElement(xIncrement * 3 + textOffsetX, yIncrement * 2 + yOffset, 0, "Move Backward", "#a88d75", "#a88d75", "Elv Pixel", "24px");
 
-            turnLeftButton = new Button(xIncrement * 2, yIncrement * 3 + yOffset, 0, "A", null);
+            turnLeftButton = new Button(xIncrement * 2, yIncrement * 3 + yOffset, 0, "Q", null);
             turnLeftButton.SetButtonDisabled(true);
             turnLeftText = new TextElement(xIncrement * 3 + textOffsetX, yIncrement * 3 + yOffset, 0, "Turn Left", "#a88d75", "#a88d75", "Elv Pixel", "24px");
 
-            turnRightButton = new Button(xIncrement * 2, yIncrement * 4 + yOffset, 0, "D", null);
+            turnRightButton = new Button(xIncrement * 2, yIncrement * 4 + yOffset, 0, "E", null);
             turnRightButton.SetButtonDisabled(true);
             turnRightText = new TextElement(xIncrement * 3 + textOffsetX, yIncrement * 4 + yOffset, 0, "Turn Right", "#a88d75", "#a88d75", "Elv Pixel", "24px");
 
-            strafeLeftButton = new Button(xIncrement * 2, yIncrement * 5 + yOffset, 0, "Q", null);
+            strafeLeftButton = new Button(xIncrement * 2, yIncrement * 5 + yOffset, 0, "A", null);
             strafeLeftButton.SetButtonDisabled(true);
             strafeLeftText = new TextElement(xIncrement * 3 + textOffsetX, yIncrement * 5 + yOffset, 0, "Strafe Left", "#a88d75", "#a88d75", "Elv Pixel", "24px");
 
-            strafeRightButton = new Button(xIncrement * 2, yIncrement * 6 + yOffset, 0, "E", null);
+            strafeRightButton = new Button(xIncrement * 2, yIncrement * 6 + yOffset, 0, "D", null);
             strafeRightButton.SetButtonDisabled(true);
             strafeRightText = new TextElement(xIncrement * 3 + textOffsetX, yIncrement * 6 + yOffset, 0, "Strafe Right", "#a88d75", "#a88d75", "Elv Pixel", "24px");
 
